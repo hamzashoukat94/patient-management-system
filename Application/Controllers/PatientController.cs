@@ -42,10 +42,10 @@ namespace Application.Controllers
 
 
         [HttpPut]
-        public IActionResult UpdatePatientRecord(PatientUpdateDTO patientUpdateDTO)
+        public IActionResult UpdatePatientRecord(PatientDTO patientDTO)
         {
-            var patientUpdatedDTO = _patientService.UpdatePatientRecord(patientUpdateDTO);
-            if (patientUpdatedDTO)
+            var patientUpdatedDTO = _patientService.UpdatePatientRecord(patientDTO);
+            if (!patientUpdatedDTO)
             {
                 return NotFound();
             }

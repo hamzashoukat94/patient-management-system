@@ -1,0 +1,146 @@
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <div class="card-header text-secondary">
+      <div class="row">
+        <div class="col">
+          <h4>Patient</h4>
+        </div>
+        <div class="form-inline my-2 my-lg-0">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveEditModal"
+            (click)="AddPatientButton()">
+            Add Patient
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="saveEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form class="modal-content form-group" [formGroup]="patientForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Patient</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-4">
+              <span class="align-middle text-secondary font-weight-bold">Name</span>
+            </div>
+            <div class="col">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="name" autocomplete="on" placeholder="Name" aria-label="Name"
+                  aria-describedby="basic-addon1" formControlName="name" [class.is-invalid]="
+                    patientForm.controls['name'].invalid &&
+                    patientForm.controls['name'].touched
+                  " />
+                <div *ngIf="
+                    patientForm.controls['name'].invalid &&
+                    patientForm.controls['name'].touched
+                  " class="invalid-feedback">
+                  Name is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <span class="align-middle text-secondary font-weight-bold">Address</span>
+            </div>
+            <div class="col">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="address" autocomplete="on" placeholder="Address"
+                  aria-label="Address" aria-describedby="basic-addon2" formControlName="address"
+                  [class.is-invalid]="patientForm.controls['address'].invalid && patientForm.controls['address'].touched">
+                <div *ngIf="patientForm.controls['address'].invalid && patientForm.controls['address'].touched"
+                  class="invalid-feedback">
+                  Address is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <span class="align-middle text-secondary font-weight-bold">Email</span>
+            </div>
+            <div class="col">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="email" autocomplete="off" placeholder="Email"
+                  aria-label="Email" aria-describedby="basic-addon3" formControlName="email"
+                  [class.is-invalid]="patientForm.controls['email'].invalid && patientForm.controls['email'].touched">
+                <div *ngIf="patientForm.controls['email'].invalid && patientForm.controls['email'].touched"
+                  class="invalid-feedback">
+                  Email is required and should be a valid email address.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <span class="align-middle text-secondary font-weight-bold">Contact</span>
+            </div>
+            <div class="col">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="contact" autocomplete="on" placeholder="Contact"
+                  aria-label="Contact" aria-describedby="basic-addon4" formControlName="contact"
+                  [class.is-invalid]="patientForm.controls['contact'].invalid && patientForm.controls['contact'].touched">
+                <div *ngIf="patientForm.controls['contact'].invalid && patientForm.controls['contact'].touched"
+                  class="invalid-feedback">
+                  Contact is required and should be a 10-digit number.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn border" data-bs-dismiss="modal" (click)="ClearPatientForm()">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddUpdatePatient()" [disabled]="patientForm.invalid">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="panel panel-default border rounded p-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.address }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.contact }}</td>
+            <td>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveEditModal"
+                (click)="EditOpenModal(patient)">
+                Edit
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="RemovePatient(patient)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

@@ -25,11 +25,11 @@ namespace Application.Domain
         IEnumerable<PatientDTO> GetAllPatients();
 
         /// <summary>
-        /// Update patient record
+        /// Update Patient record
         /// </summary>
-        /// <param name="patientUpdateDTO">update patient data transfer object</param>
-        /// <returns>Updated patient record</returns>
-        bool UpdatePatientRecord(PatientUpdateDTO patientUpdateDTO);
+        /// <param name="patientDTO">patient data transfer object</param>
+        /// <returns></returns>
+        bool UpdatePatientRecord(PatientDTO patientDTO);
 
         /// <summary>
         /// Delete the patient record

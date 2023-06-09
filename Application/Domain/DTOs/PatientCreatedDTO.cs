@@ -21,18 +21,13 @@ namespace Application.Domain.DTOs
 
     public class PatientDTO
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
+        public string Email { get; set; }
+
+        public string Contact { get; set; }
+
+        public string Address { get; set; }
     }
-
-    public class PatientUpdatedDTO
-    {
-
-    }
-
-    public class PatientUpdateDTO
-    {
-
-    }
-
-
 }

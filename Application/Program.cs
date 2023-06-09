@@ -13,7 +13,7 @@ var configuration = new ConfigurationBuilder()
     .SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("appsettings.json")
     .Build();
-var connectionString = configuration.GetConnectionString("TodoItemDatabase");
+var connectionString = configuration.GetConnectionString("DbString");
 builder.Services.AddControllers();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IPatientService, PatientService>();

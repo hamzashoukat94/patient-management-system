@@ -8,8 +8,7 @@ namespace Application.Domain.Profiles
         public PatientWriteProfile()
         {
             CreateMap<PatientCreationDTO, Patient>();
-            CreateMap<PatientUpdateDTO, Patient>();
-            CreateMap<Patient, PatientUpdatedDTO>();
+            CreateMap<PatientDTO, Patient>();
             CreateMap<Patient, PatientCreatedDTO>();
         }
     }

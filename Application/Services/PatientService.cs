@@ -54,7 +54,7 @@ namespace Application.Services
             return _mapper.Map<PatientDTO>(patient);
         }
 
-        public bool UpdatePatientRecord(PatientUpdateDTO patientUpdateDTO)
+        public bool UpdatePatientRecord(PatientDTO patientUpdateDTO)
         {
             return _patientRepository.UpdatePatientRecord(_mapper.Map<Patient>(patientUpdateDTO));
         }
