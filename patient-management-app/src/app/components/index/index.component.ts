@@ -8,7 +8,7 @@ import { PatientService } from 'src/app/services/patient.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  patients!: Patient[];
+  patients: Patient[] = []
 
   constructor(private patientService: PatientService) { }
 
