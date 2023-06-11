@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { User } from './interfaces/user';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,5 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {
-    console.log(environment.production);
-  }
-
-  title = 'patient-management-app';
+  constructor() {}
 }

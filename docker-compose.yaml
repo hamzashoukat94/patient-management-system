@@ -5,11 +5,11 @@ services:
       context: ./Application
       dockerfile: Dockerfile
     ports:
-      - "3500:80"
+      - "4005:80"
 
   frontendapp:
     build:
       context: ./patient-management-app
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "4010:80"

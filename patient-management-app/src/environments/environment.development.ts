@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3500/api/Patient',
+  patientUrl: 'http://localhost:4005/api/Patient',
+  accountUrl: 'http://localhost:4005/api/Account',
 };

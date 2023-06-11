@@ -16,20 +16,20 @@ namespace Application.Domain
         /// </summary>
         /// <param name="patientId">Patient Id</param>
         /// <returns>Patient data transfer object</returns>
-        PatientDTO? GetPatientById(int patientId);
+        PatientDto? GetPatientById(int patientId);
 
         /// <summary>
         /// Get all the patients in the system
         /// </summary>
         /// <returns></returns>
-        IEnumerable<PatientDTO> GetAllPatients();
+        IEnumerable<PatientDto> GetAllPatients();
 
         /// <summary>
         /// Update Patient record
         /// </summary>
         /// <param name="patientDTO">patient data transfer object</param>
         /// <returns></returns>
-        bool UpdatePatientRecord(PatientDTO patientDTO);
+        bool UpdatePatientRecord(PatientDto patientDTO);
 
         /// <summary>
         /// Delete the patient record

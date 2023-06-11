@@ -37,12 +37,14 @@ namespace Application.Services
             return _patientRepository.Delete(patient);
         }
 
-        public IEnumerable<PatientDTO> GetAllPatients()
+        public IEnumerable<PatientDto> GetAllPatients()
         {
-           return _patientRepository.GetAllPatients().Select(patient => _mapper.Map<PatientDTO>(patient));
+            var allPatientDtos = _patientRepository.GetAllPatients();
+
+            return _mapper.Map<IEnumerable<PatientDto>>(allPatientDtos);
         }
 
-        public PatientDTO? GetPatientById(int patientId)
+        public PatientDto? GetPatientById(int patientId)
         {
             var patient = _patientRepository.GetPatientById(patientId);
 
@@ -51,10 +53,10 @@ namespace Application.Services
                 return null;
             }
 
-            return _mapper.Map<PatientDTO>(patient);
+            return _mapper.Map<PatientDto>(patient);
         }
 
-        public bool UpdatePatientRecord(PatientDTO patientUpdateDTO)
+        public bool UpdatePatientRecord(PatientDto patientUpdateDTO)
         {
             return _patientRepository.UpdatePatientRecord(_mapper.Map<Patient>(patientUpdateDTO));
         }

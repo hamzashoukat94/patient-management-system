@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="col-md-6 offset-md-3">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Username</label>
+      <input type="text" formControlName="email" class="form-control" />
+      <div class="col-md-5">
+        <div *ngIf="validateControl('email') && hasError('email', 'email')" class="invalid-feedback">Please provide a valid email</div>
+        <div *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" class="form-control" />
+      <div class="col-md-5">
+        <em *ngIf="validateControl('password') && hasError('password', 'required')" class="invalid-feedback">Password is required</em>
+      </div>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" formControlName="rememberMe" id="rememberMe" class="form-check-input" />
+      <label for="rememberMe" class="form-check-label">Remember me</label>
+    </div>
+    <div class="form-group">
+      <button [disabled]="!loginForm.valid" class="btn btn-primary">
+        Login
+      </button>
+      <a routerLink="/register" class="btn btn-link">Register</a>
+    </div>
+  </form>
+</div>

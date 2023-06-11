@@ -18,33 +18,33 @@ export class PatientService {
 
   getAllPatients(): Observable<Patient[]> {
     return this.httpClient.get<Patient[]>(
-      environment.baseUrl,
+      environment.patientUrl,
       this.httpOptions
     );
   }
 
   getPatient(patientId: number): Observable<Patient> {
     return this.httpClient
-      .get<Patient>(`${environment.baseUrl}/${patientId}`, this.httpOptions)
+      .get<Patient>(`${environment.patientUrl}/${patientId}`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   deletePatient(patientId: number): Observable<any> {
     return this.httpClient
-      .delete(`${environment.baseUrl}?patientId=${patientId}`, this.httpOptions)
+      .delete(`${environment.patientUrl}?patientId=${patientId}`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   updatePatient(updatedPatient: Patient) {
     return this.httpClient
-      .put<Patient>(`${environment.baseUrl}`, updatedPatient, this.httpOptions)
+      .put<Patient>(`${environment.patientUrl}`, updatedPatient, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   createPatient(patientCreation: PatientCreation): Observable<any> {
     return this.httpClient
       .post<PatientCreation>(
-        `${environment.baseUrl}`,
+        `${environment.patientUrl}`,
         patientCreation,
         this.httpOptions
       )
