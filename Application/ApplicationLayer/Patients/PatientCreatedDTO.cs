@@ -15,7 +15,7 @@ namespace Application.ApplicationLayer.Patients
         [EmailAddress]
         public string? Email { get; set; }
         [Required(ErrorMessage = "Contact is required.")]
-        [Phone]
+        [RegularExpression("[0-9]{11}")]
         public string? Contact { get; set; }
         [Required(ErrorMessage = "Address is required.")]
         public string? Address { get; set; }
@@ -30,7 +30,7 @@ namespace Application.ApplicationLayer.Patients
         [EmailAddress]
         public string? Email { get; set; }
         [Required(ErrorMessage = "Contact is required.")]
-        [Phone]
+        [RegularExpression("[0-9]{11}")]
         public string? Contact { get; set; }
         [Required(ErrorMessage = "Address is required.")]
         public string? Address { get; set; }

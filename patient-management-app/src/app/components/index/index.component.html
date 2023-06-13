@@ -43,7 +43,7 @@
                     patientForm.controls['name'].touched
                   " class="invalid-feedback">
                   <div *ngIf="patientForm.controls['name'].errors?.['required']">
-                    Name is required.
+                    Name field is mandatory.
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
                 <div *ngIf="patientForm.controls['address'].invalid && patientForm.controls['address'].touched"
                   class="invalid-feedback">
                   <div *ngIf="patientForm.controls['address'].errors?.['required']">
-                    Address is required.
+                    Address field is mandatory.
                   </div>
                 </div>
               </div>
@@ -79,10 +79,10 @@
                 <div *ngIf="patientForm.controls['email'].invalid && patientForm.controls['email'].touched"
                   class="invalid-feedback">
                   <div *ngIf="patientForm.controls['email'].errors?.['required']">
-                    Email is required.
+                    Email field is mandatory.
                   </div>
                   <div *ngIf="patientForm.controls['email'].errors?.['email']">
-                    Email is not valid.
+                    Invalid email format.
                   </div>
                 </div>
               </div>
@@ -100,10 +100,10 @@
                 <div *ngIf="patientForm.controls['contact'].invalid && patientForm.controls['contact'].touched"
                   class="invalid-feedback">
                   <div *ngIf="patientForm.controls['contact'].errors?.['required']">
-                    Contact is required.
+                    Contact field is mandatory.
                   </div>
-                  <div *ngIf="patientForm.controls['contact'].errors?.['pattern']">
-                    Contact must be of 10 digits only.
+                  <div *ngIf="patientForm.controls['contact'].errors?.['phoneNumber']">
+                    The contact number must be exactly 11 digits long.
                   </div>
                 </div>
               </div>

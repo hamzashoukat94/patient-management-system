@@ -56,7 +56,7 @@ export class PatientService {
     if (error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
-      errorMessage = `Error code: ${error.status} \nMessage: ${error.Message}`;
+      errorMessage = `Error code: ${error.status} \nMessage: ${error.error.title}`;
     }
     window.alert(errorMessage);
     return throwError(errorMessage);

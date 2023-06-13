@@ -17,9 +17,9 @@ namespace Application.Domain.Patient
         public string? Email { get; set; }
 
         [Required]
-        [Phone]
+        [RegularExpression("[0-9]{11}")]
         public string? Contact { get; set; }
-
+        [Required]
         public string? Address { get; set; }
     }
 }

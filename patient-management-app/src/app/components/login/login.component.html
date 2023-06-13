@@ -3,15 +3,15 @@
   <h2>Login</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="email">Username</label>
+      <label for="email">Username(Email)</label>
       <input type="text" formControlName="email" class="form-control" aria-describedby="basic-addon3"
         [class.is-invalid]="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
       <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="invalid-feedback">
         <div *ngIf="loginForm.controls['email'].errors?.['required']">
-          Username is required.
+          Username field is mandatory.
         </div>
         <div *ngIf="loginForm.controls['email'].errors?.['email']">
-          Username is not valid email
+          Invalid email format.
         </div>
       </div>
     </div>
@@ -22,10 +22,10 @@
       <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
         class="invalid-feedback">
         <div *ngIf="loginForm.controls['password'].errors?.['required']">
-          Password is required.
+          Password field is mandatory.
         </div>
         <div *ngIf="loginForm.controls['password'].errors?.['pattern']">
-          Password must contains 1 non-alphanumeric, 1 digit and 1 uppercase letter.
+          Password must include at least one non-alphanumeric character, one digit, and one uppercase letter.
         </div>      </div>
     </div>
     <div class="form-group form-check">
