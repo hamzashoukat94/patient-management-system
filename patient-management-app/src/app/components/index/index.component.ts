@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Patient } from 'src/app/interfaces/patient';
 import { PatientCreation } from 'src/app/interfaces/patient-creation';
 import { PatientService } from 'src/app/services/patient.service';
-import { emailValidator } from 'src/app/validators/email-validator';
 import { phoneNumberValidator } from 'src/app/validators/phone-number-validator';
 
 @Component({

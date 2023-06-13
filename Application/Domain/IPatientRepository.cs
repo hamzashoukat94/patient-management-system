@@ -1,4 +1,6 @@
-﻿namespace Application.Domain
+﻿using Application.Domain.Models;
+
+namespace Application.Domain
 {
     public interface IPatientRepository
     {

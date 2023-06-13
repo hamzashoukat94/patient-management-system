@@ -42,7 +42,9 @@
                     patientForm.controls['name'].invalid &&
                     patientForm.controls['name'].touched
                   " class="invalid-feedback">
-                  Name is required.
+                  <div *ngIf="patientForm.controls['name'].errors?.['required']">
+                    Name is required.
+                  </div>
                 </div>
               </div>
             </div>
@@ -58,7 +60,9 @@
                   [class.is-invalid]="patientForm.controls['address'].invalid && patientForm.controls['address'].touched">
                 <div *ngIf="patientForm.controls['address'].invalid && patientForm.controls['address'].touched"
                   class="invalid-feedback">
-                  Address is required.
+                  <div *ngIf="patientForm.controls['address'].errors?.['required']">
+                    Address is required.
+                  </div>
                 </div>
               </div>
             </div>
@@ -74,7 +78,12 @@
                   [class.is-invalid]="patientForm.controls['email'].invalid && patientForm.controls['email'].touched">
                 <div *ngIf="patientForm.controls['email'].invalid && patientForm.controls['email'].touched"
                   class="invalid-feedback">
-                  Email is required and should be a valid email address.
+                  <div *ngIf="patientForm.controls['email'].errors?.['required']">
+                    Email is required.
+                  </div>
+                  <div *ngIf="patientForm.controls['email'].errors?.['email']">
+                    Email is not valid.
+                  </div>
                 </div>
               </div>
             </div>
@@ -90,7 +99,12 @@
                   [class.is-invalid]="patientForm.controls['contact'].invalid && patientForm.controls['contact'].touched">
                 <div *ngIf="patientForm.controls['contact'].invalid && patientForm.controls['contact'].touched"
                   class="invalid-feedback">
-                  Contact is required and should be a 10-digit number.
+                  <div *ngIf="patientForm.controls['contact'].errors?.['required']">
+                    Contact is required.
+                  </div>
+                  <div *ngIf="patientForm.controls['contact'].errors?.['pattern']">
+                    Contact must be of 10 digits only.
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,7 +114,8 @@
           <button type="button" class="btn border" data-bs-dismiss="modal" (click)="ClearPatientForm()">
             Close
           </button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddUpdatePatient()" [disabled]="patientForm.invalid">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddUpdatePatient()"
+            [disabled]="patientForm.invalid">
             Save changes
           </button>
         </div>

@@ -1,5 +1,6 @@
 ﻿using Application.Domain;
 using Application.Domain.DTOs;
+using Application.Domain.Models;
 using AutoMapper;
 
 namespace Application.Services

@@ -3,44 +3,69 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input type="text" formControlName="firstName" class="form-control" />
-      <div class="col-md-5 invalid-feedback">
-        <em *ngIf="validateControl('firstName') && hasError('firstName', 'required')">Please provide a valid
-          firtName</em>
-      </div>
+      <input type="text" formControlName="firstName" class="form-control" aria-describedby="basic-addon3"
+        [class.is-invalid]="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+      <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched"
+        class="invalid-feedback">
+        <div *ngIf="registerForm.controls['firstName'].errors?.['required']">
+          First Name is required.
+        </div>      </div>
     </div>
     <div class="form-group">
       <label for="lastName">Last Name</label>
-      <input type="text" formControlName="lastName" class="form-control" />
-      <div class="col-md-5 invalid-feedback">
-        <em *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Please provide a valid lastName</em>
+      <input type="text" formControlName="lastName" class="form-control" aria-describedby="basic-addon3"
+        [class.is-invalid]="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched">
+      <div *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched"
+        class="invalid-feedback">
+        <div *ngIf="registerForm.controls['lastName'].errors?.['required']">
+          Last Name is required.
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" formControlName="email" class="form-control" />
-      <div class="col-md-5 invalid-feedback">
-        <em *ngIf="validateControl('email') && hasError('email', 'email')">Please provide a valid email</em>
-        <em *ngIf="validateControl('email') && hasError('email', 'required')">Email is required</em>
+      <input type="text" formControlName="email" class="form-control" aria-describedby="basic-addon3"
+        [class.is-invalid]="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched"
+        class="invalid-feedback">
+        <div *ngIf="registerForm.controls['email'].errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="registerForm.controls['email'].errors?.['email']">
+          Email is not valid.
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" formControlName="password" class="form-control" />
-      <div class="col-md-5 invalid-feedback">
-        <em *ngIf="validateControl('password') && hasError('password', 'required')">Please provide a valid password</em>
-        <em *ngIf="validateControl('email') && hasError('email', 'pattern')">Password must contain 1 non-alphanumeric, 1
-          digit, 1 uppercase</em>
+      <input type="password" formControlName="password" class="form-control" aria-describedby="basic-addon3"
+        [class.is-invalid]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+      <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched"
+        class="invalid-feedback">
+        <div *ngIf="registerForm.controls['password'].errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="registerForm.controls['password'].errors?.['pattern']">
+          Password must contains 1 non-alphanumeric, 1 digit and 1 uppercase letter.
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="confirm">Confirm password</label>
-      <input type="password" formControlName="confirmpassword" class="form-control" />
-      <div class="col-md-5 invalid-feedback">
-        <em *ngIf="validateControl('confirmpassword') && hasError('confirmpassword', 'required')">Please provide a valid password</em>
-        <em *ngIf="validateControl('confirmpassword') && hasError('confirmpassword', 'match')">Password must contain 1 non-alphanumeric,
-          1 digit, 1 uppercase</em>
+      <input type="password" formControlName="confirmpassword" class="form-control" aria-describedby="basic-addon3"
+        [class.is-invalid]="registerForm.controls['confirmpassword'].invalid && registerForm.controls['confirmpassword'].touched">
+      <div *ngIf="registerForm.controls['confirmpassword'].invalid && registerForm.controls['confirmpassword'].touched"
+      class="invalid-feedback">
+      <div *ngIf="registerForm.controls['confirmpassword'].errors?.['required']">
+        Confirm Password is required.
       </div>
+      <div *ngIf="registerForm.controls['confirmpassword'].errors?.['pattern']">
+        Password must contains 1 non-alphanumeric, 1 digit and 1 uppercase letter.
+      </div>
+      <div *ngIf="registerForm.controls['confirmpassword'].errors?.['confirmedValidator']">
+        Password and confirm password must match.
+      </div>
+    </div>
     </div>
     <div class="form-group mt-4">
       <button [disabled]="!registerForm.valid" class="btn btn-primary">

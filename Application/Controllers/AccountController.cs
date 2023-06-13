@@ -1,5 +1,5 @@
-﻿using Application.Domain;
-using Application.Domain.DTOs;
+﻿using Application.Domain.DTOs;
+using Application.Domain.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -72,7 +72,7 @@ namespace Application.Controllers
                 if (result.Succeeded)
                 {
                     // TODO: send the JWT token to logged in client for future requests authorization
-                    string tokenString = PrepareToken();
+                   // string tokenString = PrepareToken();
                     return Ok(new LoginResponseDto { UserName = loginDto.Email });
                 }
 
@@ -81,15 +81,15 @@ namespace Application.Controllers
             return BadRequest("Invalid Login Attempt");
         }
 
-        private static string PrepareToken()
+        private static string PrepareToken(IConfiguration configuration)
         {
             try
             {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("testsecret@928"));
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
                 var tokeOptions = new JwtSecurityToken(
-                    issuer: "https://localhost:5001",
-                    audience: "https://localhost:5001",
+                    issuer: configuration["Jwt:Issuer"],
+                    audience: configuration["Jwt:Audience"],
                     claims: new List<Claim>(),
                     expires: DateTime.Now.AddMinutes(5),
                     signingCredentials: signinCredentials

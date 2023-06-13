@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   submitted = false;
 
   constructor(
+      private formBuilder: FormBuilder,
       private router: Router,
       private authenticationService: AuthenticationService,
       private userService: UserService,
@@ -32,26 +33,47 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registerForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[!@#$%^&*()\-_=+{}[\]:"|;'<>,.?/])(?=.*\d)(?=.*[A-Z]).+$/)]),
-      confirmpassword: new FormControl('', [Validators.required, this.passwordMatchValidator()])
-    });
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[!@#$%^&*()\-_=+{}[\]:"|;'<>,.?/])(?=.*\d)(?=.*[A-Z]).+$/)]],
+      confirmpassword: ['', [Validators.required, Validators.pattern(/^(?=.*[!@#$%^&*()\-_=+{}[\]:"|;'<>,.?/])(?=.*\d)(?=.*[A-Z]).+$/)]]
+    },
+    { validators: this.ConfirmedValidator('password', 'confirmpassword')});
   }
 
-  passwordMatchValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const password = control.get('password');
-      const confirm = control.get('confirm');
-
-      if (password && confirm && password.value !== confirm.value) {
-        return { passwordMismatch: true };
+  ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors['confirmedValidator']
+      ) {
+        return;
       }
-
-      return null;
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ 'confirmedValidator': true });
+      } else {
+        matchingControl.setErrors(null);
+      }
     };
+  }
+
+
+  passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmpassword');
+    if (!password || !confirmPassword) {
+      return null;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      return { passwordMatch: true };
+    }
+
+    return null;
   }
 
   validateControl(controlName: string): any {

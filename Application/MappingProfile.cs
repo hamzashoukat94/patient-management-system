@@ -1,6 +1,6 @@
 ﻿using Application.Domain.DTOs;
-using Application.Domain;
 using AutoMapper;
+using Application.Domain.Models;
 
 namespace Application
 {

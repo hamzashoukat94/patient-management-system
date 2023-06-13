@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   returnUrl!: string;
 
   constructor(
-    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[!@#$%^&*()\-_=+{}[\]:"|;'<>,.?/])(?=.*\d)(?=.*[A-Z]).+$/)]),
       rememberMe: new FormControl(false),
     });
 

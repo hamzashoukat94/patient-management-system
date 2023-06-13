@@ -1,4 +1,5 @@
 ﻿using Application.Domain;
+using Application.Domain.Models;
 
 namespace Application.Infrastructure.Data
 {
