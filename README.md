@@ -1,4 +1,7 @@
 # patient-management-system
+[![.NET](https://github.com/hamzashoukat94/patient-management-system/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hamzashoukat94/patient-management-system/actions/workflows/dotnet.yml)
+[![Maintainability][maintainability-url]][code-climate-url]
+[![Licence][license-badge]][license-url]
 
 ## Docker Setup and Commands
 Before proceeding, please ensure that the Docker service is up and running.
@@ -44,4 +47,7 @@ docker compose down
 
 ![gif bk](https://github.com/hamzashoukat94/patient-management-system/assets/50887243/ca78ba35-d2df-4fb8-9e2d-13a0b00b9adc)
 
-
+[code-climate-url]: https://codeclimate.com/github/hamzashoukat94/patient-management-system
+[maintainability-url]: https://api.codeclimate.com/v1/badges/0e7010940bf861485eff/maintainability
+[license-badge]: https://img.shields.io/badge/licence-MIT-blue
+[license-url]: LICENSE
