@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace Application.Domain.Models
+namespace Application.Domain.Patient
 {
     public class Patient
     {

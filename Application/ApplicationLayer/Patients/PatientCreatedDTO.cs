@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Domain.DTOs
+namespace Application.ApplicationLayer.Patients
 {
     public class PatientCreatedDTO
     {
@@ -9,7 +9,7 @@ namespace Application.Domain.DTOs
 
     public class PatientCreationDTO
     {
-        [Required(ErrorMessage ="Name is required.")]
+        [Required(ErrorMessage = "Name is required.")]
         public string? Name { get; set; }
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]

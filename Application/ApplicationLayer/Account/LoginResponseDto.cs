@@ -1,4 +1,4 @@
-﻿namespace Application.Domain.DTOs
+﻿namespace Application.ApplicationLayer.Account
 {
     public class LoginResponseDto
     {

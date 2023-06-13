@@ -1,5 +1,5 @@
-﻿using Application.Domain.DTOs;
-using Application.Domain.Models;
+﻿using Application.ApplicationLayer.Account;
+using Application.Domain.User;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

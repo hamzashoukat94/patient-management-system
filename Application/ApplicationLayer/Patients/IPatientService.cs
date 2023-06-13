@@ -1,6 +1,6 @@
-﻿using Application.Domain.DTOs;
+﻿using Application.Domain;
 
-namespace Application.Domain
+namespace Application.ApplicationLayer.Patients
 {
     public interface IPatientService
     {

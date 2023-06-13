@@ -1,5 +1,5 @@
-﻿using Application.Domain;
-using Application.Domain.Models;
+﻿using Application.Domain.Patient;
+using Application.Helpers;
 
 namespace Application.Infrastructure.Data
 {

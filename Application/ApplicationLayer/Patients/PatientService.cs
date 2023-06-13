@@ -1,9 +1,9 @@
 ﻿using Application.Domain;
-using Application.Domain.DTOs;
-using Application.Domain.Models;
+using Application.Domain.Patient;
+using Application.Helpers;
 using AutoMapper;
 
-namespace Application.Services
+namespace Application.ApplicationLayer.Patients
 {
     public class PatientService : IPatientService
     {

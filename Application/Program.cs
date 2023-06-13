@@ -1,4 +1,4 @@
-using Application.Domain.Models;
+using Application.Domain.User;
 using Application.Extensions;
 using Application.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;

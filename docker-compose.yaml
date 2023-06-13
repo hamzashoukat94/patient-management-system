@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4005:80"
+    environment:
+      - ConnectionStrings__DbString=Server=host.docker.internal;Database=patientDatabase;uid=root;pwd=@4Islamabad$
 
   frontendapp:
     build:

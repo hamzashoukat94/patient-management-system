@@ -1,6 +1,7 @@
-﻿using Application.Domain.Models;
+﻿using Application.Domain;
+using Application.Domain.Patient;
 
-namespace Application.Domain
+namespace Application.Helpers
 {
     public interface IPatientRepository
     {

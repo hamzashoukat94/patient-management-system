@@ -1,6 +1,6 @@
-﻿using Application.Domain;
+﻿using Application.ApplicationLayer.Patients;
+using Application.Helpers;
 using Application.Infrastructure.Data;
-using Application.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

@@ -1,5 +1,4 @@
-﻿using Application.Domain;
-using Application.Domain.DTOs;
+﻿using Application.ApplicationLayer.Patients;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
