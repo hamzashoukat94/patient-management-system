@@ -7,19 +7,19 @@ namespace Application.Domain.Patient
     {
 
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [RegularExpression("[0-9]{11}")]
-        public string? Contact { get; set; }
+        public string Contact { get; set; }
         [Required]
-        public string? Address { get; set; }
+        public string Address { get; set; }
     }
 }
