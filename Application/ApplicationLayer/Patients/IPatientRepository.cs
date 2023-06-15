@@ -1,7 +1,7 @@
 ﻿using Application.Domain;
-using Application.Domain.Patient;
+using Application.Domain.Entities;
 
-namespace Application.Helpers
+namespace Application.ApplicationLayer.Patients
 {
     public interface IPatientRepository
     {

@@ -1,8 +1,9 @@
-﻿using Application.ApplicationLayer.Patients;
+﻿using Application.ApplicationLayer.CreatePatient;
+using Application.ApplicationLayer.Patients;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Application.Controllers
+namespace Application.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -38,9 +39,13 @@ namespace Application.Controllers
         [HttpPost]
         public IActionResult CreatePatientRecord(PatientCreationDTO patientCreationDTO)
         {
-            if (patientCreationDTO == null || !ModelState.IsValid)
-                return BadRequest();
-
+            var validator = new PatientCreateValidator();
+            var result = validator.Validate(patientCreationDTO);
+            if (!result.IsValid)
+            {
+                return BadRequest(result.Errors);
+            }
+            
             var patientCreatedDTO = _patientService.CreatePatientRecord(patientCreationDTO);
             return CreatedAtAction(nameof(GetPatientById), new { patientId = patientCreatedDTO.Id }, patientCreatedDTO);
         }
@@ -49,8 +54,12 @@ namespace Application.Controllers
         [HttpPut]
         public IActionResult UpdatePatientRecord(PatientDto patientDTO)
         {
-            if (patientDTO == null || !ModelState.IsValid)
-                return BadRequest();
+            var validator = new PatientUpdateValidator();
+            var result = validator.Validate(patientDTO);
+            if (!result.IsValid)
+            {
+                return BadRequest(result.Errors);
+            }
 
             var patientUpdatedDTO = _patientService.UpdatePatientRecord(patientDTO);
             if (!patientUpdatedDTO)

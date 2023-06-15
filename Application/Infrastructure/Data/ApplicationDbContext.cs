@@ -1,5 +1,4 @@
-﻿using Application.Domain.Patient;
-using Application.Domain.User;
+﻿using Application.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,5 @@
-﻿using Application.Domain;
+﻿using Application.ApplicationLayer.CreatePatient;
+using Application.Domain;
 
 namespace Application.ApplicationLayer.Patients
 {

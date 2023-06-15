@@ -1,5 +1,5 @@
 ﻿using Application.ApplicationLayer.Account;
-using Application.Domain.User;
+using Application.Domain.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Application.Controllers
+namespace Application.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace Application.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
 
-        public AccountController(UserManager<User> userManager , SignInManager<User> signInManager, IMapper mapper)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -62,7 +62,7 @@ namespace Application.Controllers
                 Microsoft.AspNetCore.Identity.SignInResult result;
                 try
                 {
-                     result = await _signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, loginDto.RememberMe, false);
+                    result = await _signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, loginDto.RememberMe, false);
                 }
                 catch (Exception e)
                 {
@@ -72,7 +72,7 @@ namespace Application.Controllers
                 if (result.Succeeded)
                 {
                     // TODO: send the JWT token to logged in client for future requests authorization
-                   // string tokenString = PrepareToken();
+                    // string tokenString = PrepareToken();
                     return Ok(new LoginResponseDto { UserName = loginDto.Email });
                 }
 

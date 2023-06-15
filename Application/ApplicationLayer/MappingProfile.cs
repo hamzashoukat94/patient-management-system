@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Application.ApplicationLayer.Account;
-using Application.Domain.User;
-using Application.Domain.Patient;
 using Application.ApplicationLayer.Patients;
+using Application.Domain.Entities;
+using Application.ApplicationLayer.CreatePatient;
 
 namespace Application.ApplicationLayer
 {

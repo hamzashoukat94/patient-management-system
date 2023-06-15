@@ -1,16 +1,15 @@
-using Application.Domain.User;
-using Application.Extensions;
+using Application.ApplicationLayer;
+using Application.Domain.Entities;
+using Application.Infrastructure;
 using Application.Infrastructure.Data;
+using Application.Presentation;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.ConfigureCors();
-builder.Services.ConfigureIISIntegration();
-builder.Services.ConfigureSqlContext(builder.Configuration);
-builder.Services.ConfigureAuthentication(builder.Configuration);
-builder.Services.ConfigureRepository();
-builder.Services.ConfigureAppService();
-builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddPresentationServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();

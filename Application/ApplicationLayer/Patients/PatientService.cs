@@ -1,6 +1,6 @@
-﻿using Application.Domain;
-using Application.Domain.Patient;
-using Application.Helpers;
+﻿using Application.ApplicationLayer.CreatePatient;
+using Application.Domain;
+using Application.Domain.Entities;
 using AutoMapper;
 
 namespace Application.ApplicationLayer.Patients
